@@ -3,6 +3,7 @@
 
 import storage
 import render
+import sys
 
 def main(bucket_name, source_blob_name, destination_file_name):
 
@@ -16,5 +17,5 @@ def main(bucket_name, source_blob_name, destination_file_name):
     render.render(destination_file_name)
 
 
-if __name__ = "__main__":
-    main(argv[1], argv[2], argv[3])
+if __name__ == "__main__":
+    main(sys.argv[1], sys.argv[2], sys.argv[3])
