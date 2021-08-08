@@ -34,10 +34,8 @@ def callback(message):
     render.render_file(destination_file_name)
 
 
-while True:
-    streaming_pull_future = subscriber.subscribe(subscription_path, callback=callback)
-    print(f"Listening for messages on {subscription_path}..\n")
-    time.sleep(5)
+streaming_pull_future = subscriber.subscribe(subscription_path, callback=callback)
+print(f"Listening for messages on {subscription_path}..\n")
 
 # Wrap subscriber in a 'with' block to automatically call close() when done.
 with subscriber:
