@@ -5,6 +5,7 @@ import storage
 import render
 import sys
 import download
+import time
 from concurrent.futures import TimeoutError
 from google.cloud import pubsub_v1
 
@@ -33,17 +34,17 @@ def callback(message):
     render.render_file(destination_file_name)
 
 
-
-streaming_pull_future = subscriber.subscribe(subscription_path, callback=callback)
-print(f"Listening for messages on {subscription_path}..\n")
+while True:
+    streaming_pull_future = subscriber.subscribe(subscription_path, callback=callback)
+    print(f"Listening for messages on {subscription_path}..\n")
+    time.sleep(5)
 
 # Wrap subscriber in a 'with' block to automatically call close() when done.
-while True:
-    with subscriber:
-        try:
-            # When `timeout` is not set, result() will block indefinitely,
-            # unless an exception is encountered first.
-            streaming_pull_future.result(timeout=timeout)
-        except TimeoutError:
-            streaming_pull_future.cancel()  # Trigger the shutdown.
-            streaming_pull_future.result()  # Block until the shutdown is complete.
+with subscriber:
+    try:
+        # When `timeout` is not set, result() will block indefinitely,
+        # unless an exception is encountered first.
+        streaming_pull_future.result(timeout=timeout)
+    except TimeoutError:
+        streaming_pull_future.cancel()  # Trigger the shutdown.
+        streaming_pull_future.result()  # Block until the shutdown is complete.
