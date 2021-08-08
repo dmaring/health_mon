@@ -15,7 +15,7 @@ import traceback
 
 logging.basicConfig(level=logging.DEBUG)
 
-def render(file_name):
+def render_file(file_name):
     try:
         logging.info("Starting rendering...")
         epd = epd7in5_V2.EPD()

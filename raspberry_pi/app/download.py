@@ -5,9 +5,9 @@ import storage
 import render
 import sys
 
-def download(bucket_name, source_blob_name, destination_file_name):
+def download_blob(bucket_name, source_blob_name, destination_file_name):
 
-    
+
     # Download message fom Cloud Storage
     storage.download_blob(bucket_name, source_blob_name, destination_file_name)
 

@@ -28,9 +28,9 @@ def callback(message):
     bucket_name = message.attributes.get("bucketId")
     source_blob_name = message.attributes.get("objectId")
 
-    download(bucket_name, source_blob_name, destination_file_name)
+    download.download_blob(bucket_name, source_blob_name, destination_file_name)
 
-    render(destination_file_name)
+    render.render_file(destination_file_name)
 
 
 
