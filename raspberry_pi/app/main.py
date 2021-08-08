@@ -25,8 +25,8 @@ def callback(message):
     message.ack()
 
     # parse message for bucket_name, source_blob_name
-    bucket_name = message.bucket
-    source_blob_name = message.name
+    bucket_name = message.attributes.get("bucket")
+    source_blob_name = message.attributes.get("name")
 
     download(bucket_name, source_blob_name, destination_file_name)
 
