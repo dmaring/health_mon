@@ -42,4 +42,4 @@ def render_file(file_name):
         exit()
 
 if __name__ == "__main__":
-    render(sys.argv[1])
+    render_file(sys.argv[1])

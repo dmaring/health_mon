@@ -10,7 +10,7 @@ from concurrent.futures import TimeoutError
 from google.cloud import pubsub_v1
 
 project_id = "drews-project-279817"
-subscription_id = "image_topic-sub"
+subscription_id = "image-topic-sub"
 # Set location for downloaded file to raspberry pi
 destination_file_name = "/home/pi/app/health_mon/raspberry_pi/images/new"
 # Number of seconds the subscriber should listen for messages
